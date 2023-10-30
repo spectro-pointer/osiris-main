@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Video Stream with Mouse Coordinates</title>
+  <link rel="stylesheet" href="./style.css">
+ 
+</head>
+
+<body>
+  <button id="night-mode-toggle">Modo nocturno</button>
+  <!--
+  <div id="videoContainer">
+    
+  </div>
+-->
+  <div id="buscador" style="display: flex"></div>
+
+  <div class="control-buttons">
+    <button id="boton-azimut-incrementar">⬆️ Incrementar Azimuth</button>
+    <button id="boton-azimut-decrementar">⬇️ Decrementar Azimuth</button>
+    <p id="azimuth-display">Azimuth: 0</p>
+    <p id="azimuth-history">Historial de Azimuth: []</p>
+    
+    <button id="boton-elevacion-incrementar">⬆️ Incrementar Elevación</button>
+    <button id="boton-elevacion-decrementar">⬇️ Decrementar Elevación</button>
+    <p id="elevation-display">Elevación: 0</p>
+    <p id="elevation-history">Historial de Elevación: []</p>
+    
+
+  </div>
+  <div id="joystick-base">
+   <div id="joystick-control"></div>
+  </div>
+  <button id="to-other-page">Ir a la otra página</button>
+
+<script>
+document.getElementById("to-other-page").addEventListener("click", function() {
+  window.location.href = "index.html";  // Cambia esto a la ruta de tu segunda página
+});
+</script>
+
+
+  <script src="./function.js"></script>
+  <script src="./buscador.js"></script>
+  
+  
+  
+  <script>
+  var videoContainer = document.getElementById('videoContainer');
+  // Crea el elemento de video
+  var video = document.createElement('video');
+  // Agrega el video al contenedor
+  videoContainer.appendChild(video);
+  </script>
+  <script>
+var videoContainer = document.getElementById('videoContainer');
+videoContainer.addEventListener('mousedown', mouseDown, false);
+window.addEventListener('mouseup', mouseUp, false);
+
+function mouseUp()
+{
+    window.removeEventListener('mousemove', videoMove, true);
+}
+
+function mouseDown(e){
+  window.addEventListener('mousemove', videoMove, true);
+}
+
+function videoMove(e){
+  videoContainer.style.top = e.clientY + 'px';
+  videoContainer.style.left = e.clientX + 'px';
+}
+
+
+  </script>
+
+</body>
+
+</html>
